@@ -167,9 +167,6 @@
         ]
       },
       "put": {
-        "tags": [
-          "Accessory"
-        ],
         "summary": "Create or update an existing accessory in LEVA+.",
         "operationId": "base-PutAccessory",
         "parameters": [
@@ -274,7 +271,10 @@
             }
           }
         },
-        "description": "Updates an existing accessory if internal nor external ID match. Creates an accessory if neither internal or external ID is provided or no matching record could be found."
+        "description": "Updates an existing accessory if internal nor external ID match. Creates an accessory if neither internal or external ID is provided or no matching record could be found.",
+        "tags": [
+          "MasterData"
+        ]
       }
     },
     "/api/v3/base/Machine": {
@@ -432,9 +432,6 @@
         ]
       },
       "put": {
-        "tags": [
-          "Machine"
-        ],
         "summary": "Create or update an existing Machine in LEVA+.",
         "operationId": "base-PutMachine",
         "parameters": [
@@ -539,7 +536,10 @@
             }
           }
         },
-        "description": "Updates an existing machine if internal nor external ID match. Creates a machine if neither internal or external ID is provided or no matching record could be found."
+        "description": "Updates an existing machine if internal nor external ID match. Creates a machine if neither internal or external ID is provided or no matching record could be found.",
+        "tags": [
+          "MasterData"
+        ]
       }
     },
     "/api/v3/base/MachineType": {
@@ -697,9 +697,6 @@
         ]
       },
       "put": {
-        "tags": [
-          "MachineType"
-        ],
         "summary": "Create or update an existing machine type in LEVA+.",
         "operationId": "base-PutMachineType",
         "parameters": [
@@ -804,7 +801,10 @@
             }
           }
         },
-        "description": "Updates an existing machine type if internal nor external ID match. Creates a machine type if neither internal or external ID is provided or no matching record could be found."
+        "description": "Updates an existing machine type if internal nor external ID match. Creates a machine type if neither internal or external ID is provided or no matching record could be found.",
+        "tags": [
+          "MasterData"
+        ]
       }
     },
     "/api/v3/base/Surcharge": {
@@ -1367,7 +1367,10 @@
           },
           "description": "New or updated time stamps for JobID."
         },
-        "description": "Updates an existing set of job time stamps for a given internal nor external Job ID."
+        "description": "Updates an existing set of job time stamps for a given internal nor external Job ID.",
+        "tags": [
+          "SchedulingJob"
+        ]
       }
     },
     "/api/v3/scheduling/Job/Report": {
@@ -1610,7 +1613,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "SchedulingJob"
+        ]
       }
     },
     "/api/v3/scheduling/Job/Handover": {
@@ -1844,7 +1850,10 @@
             }
           }
         },
-        "description": "Updates an existing job handover for a given internal nor external Job ID."
+        "description": "Updates an existing job handover for a given internal nor external Job ID.",
+        "tags": [
+          "SchedulingJob"
+        ]
       }
     },
     "/api/v3/scheduling/Job/Return": {
@@ -2078,7 +2087,10 @@
             }
           }
         },
-        "description": "Updates an existing job return for a given internal nor external Job ID."
+        "description": "Updates an existing job return for a given internal nor external Job ID.",
+        "tags": [
+          "SchedulingJob"
+        ]
       }
     },
     "/api/v3/scheduling/Job/Surcharge": {
@@ -2319,7 +2331,10 @@
             }
           }
         },
-        "description": "Updates an existing set of job surcharges for a given internal nor external Job ID."
+        "description": "Updates an existing set of job surcharges for a given internal nor external Job ID.",
+        "tags": [
+          "SchedulingJob"
+        ]
       }
     },
     "/api/v3/scheduling/Job/Form": {
@@ -2560,7 +2575,10 @@
             }
           }
         },
-        "description": "Updates an existing set of job job forms for a given internal nor external Job ID."
+        "description": "Updates an existing set of job job forms for a given internal nor external Job ID.",
+        "tags": [
+          "SchedulingJob"
+        ]
       }
     },
     "/api/v3/scheduling/Job/Problem": {
@@ -2800,7 +2818,10 @@
             }
           }
         },
-        "description": "Updates an existing set of job problems for a given internal nor external Job ID."
+        "description": "Updates an existing set of job problems for a given internal nor external Job ID.",
+        "tags": [
+          "SchedulingJob"
+        ]
       }
     },
     "/api/v3/scheduling/Job/Document": {
@@ -3040,7 +3061,10 @@
             }
           }
         },
-        "description": "Updates an existing set of job documents for a given internal nor external Job ID."
+        "description": "Updates an existing set of job documents for a given internal nor external Job ID.",
+        "tags": [
+          "SchedulingJob"
+        ]
       }
     },
     "/api/v3/scheduling/Job/TransportDemand": {
@@ -3280,7 +3304,10 @@
             }
           }
         },
-        "description": "Updates an existing set of job transport demands for a given internal nor external Job ID."
+        "description": "Updates an existing set of job transport demands for a given internal nor external Job ID.",
+        "tags": [
+          "SchedulingJob"
+        ]
       }
     }
   },
