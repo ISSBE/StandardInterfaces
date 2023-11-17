@@ -14,9 +14,6 @@
   "paths": {
     "/api/v3/base/Accessory": {
       "get": {
-        "tags": [
-          "Accessory"
-        ],
         "summary": "Get accessory data from LEVA+.",
         "operationId": "base-GetAccessory",
         "parameters": [
@@ -164,7 +161,10 @@
             }
           }
         },
-        "description": "By passing in the appropriate options, the service searches for available accessories in the system."
+        "description": "By passing in the appropriate options, the service searches for available accessories in the system.",
+        "tags": [
+          "MasterData"
+        ]
       },
       "put": {
         "tags": [
@@ -279,9 +279,6 @@
     },
     "/api/v3/base/Machine": {
       "get": {
-        "tags": [
-          "Machine"
-        ],
         "summary": "Get machine data from LEVA+.",
         "operationId": "base-GetMachine",
         "parameters": [
@@ -429,7 +426,10 @@
             }
           }
         },
-        "description": "By passing in the appropriate options, the service searches for available machine(s) in the system."
+        "description": "By passing in the appropriate options, the service searches for available machine(s) in the system.",
+        "tags": [
+          "MasterData"
+        ]
       },
       "put": {
         "tags": [
@@ -544,9 +544,6 @@
     },
     "/api/v3/base/MachineType": {
       "get": {
-        "tags": [
-          "MachineType"
-        ],
         "summary": "Get machine type data from LEVA+.",
         "operationId": "base-GetMachineType",
         "parameters": [
@@ -694,7 +691,10 @@
             }
           }
         },
-        "description": "By passing in the appropriate options, the service searches for available machine type(s) in the system."
+        "description": "By passing in the appropriate options, the service searches for available machine type(s) in the system.",
+        "tags": [
+          "MasterData"
+        ]
       },
       "put": {
         "tags": [
@@ -810,7 +810,9 @@
     "/api/v3/base/Surcharge": {
       "get": {
         "summary": "Search for Surcharge",
-        "tags": [],
+        "tags": [
+          "MasterData"
+        ],
         "operationId": "base-GetSurcharge",
         "responses": {
           "200": {
@@ -953,7 +955,6 @@
     "/api/v3/scheduling/Job": {
       "get": {
         "summary": "Search for Job",
-        "tags": [],
         "operationId": "scheduling-GetJob",
         "responses": {
           "200": {
@@ -1101,13 +1102,18 @@
             }
           }
         ],
-        "description": "By passing in the appropriate options, the service searches for available job(s) in the system."
+        "description": "By passing in the appropriate options, the service searches for available job(s) in the system.",
+        "tags": [
+          "SchedulingJob"
+        ]
       }
     },
     "/api/v3/scheduling/Job/TimeStamp": {
       "get": {
         "summary": "Search for Job Timestamp",
-        "tags": [],
+        "tags": [
+          "SchedulingJob"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1367,7 +1373,9 @@
     "/api/v3/scheduling/Job/Report": {
       "get": {
         "summary": "Search for Job Report",
-        "tags": [],
+        "tags": [
+          "SchedulingJob"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1608,7 +1616,9 @@
     "/api/v3/scheduling/Job/Handover": {
       "get": {
         "summary": "Search for Job Handover",
-        "tags": [],
+        "tags": [
+          "SchedulingJob"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1840,7 +1850,9 @@
     "/api/v3/scheduling/Job/Return": {
       "get": {
         "summary": "Search for Job Return",
-        "tags": [],
+        "tags": [
+          "SchedulingJob"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2072,7 +2084,9 @@
     "/api/v3/scheduling/Job/Surcharge": {
       "get": {
         "summary": "Search for Job Surcharge",
-        "tags": [],
+        "tags": [
+          "SchedulingJob"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2311,7 +2325,6 @@
     "/api/v3/scheduling/Job/Form": {
       "get": {
         "summary": "Search for Job Form",
-        "tags": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -2450,7 +2463,10 @@
             }
           }
         ],
-        "description": "By passing in the appropriate options, the service searches for job form(s) in the system."
+        "description": "By passing in the appropriate options, the service searches for job form(s) in the system.",
+        "tags": [
+          "SchedulingJob"
+        ]
       },
       "parameters": [],
       "put": {
@@ -2550,7 +2566,9 @@
     "/api/v3/scheduling/Job/Problem": {
       "get": {
         "summary": "Search for Job Problem",
-        "tags": [],
+        "tags": [
+          "SchedulingJob"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2788,7 +2806,9 @@
     "/api/v3/scheduling/Job/Document": {
       "get": {
         "summary": "Search for Job Document",
-        "tags": [],
+        "tags": [
+          "SchedulingJob"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -3026,7 +3046,9 @@
     "/api/v3/scheduling/Job/TransportDemand": {
       "get": {
         "summary": "Search for Job Transport Demand",
-        "tags": [],
+        "tags": [
+          "SchedulingJob"
+        ],
         "responses": {
           "200": {
             "description": "OK",
