@@ -3468,6 +3468,162 @@
           "DispositionGroupCode"
         ]
       },
+      "AddressDto": {
+        "required": [
+          "Active",
+          "City",
+          "Country",
+          "Language",
+          "Origin",
+          "ZipCode"
+        ],
+        "type": "object",
+        "properties": {
+          "BpAddrID": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "performis Address ID - This ID uniquely identifies an address in performis. For example, ID \\\"629\\\" for address \\\"Infosystem AG, Wil\\\". To identify the address, either the performis address ID (BpAddrID) or the ID of the external system (ExternalBpAddrID) is required.",
+            "format": "int64",
+            "nullable": true
+          },
+          "ExternalBpAddrID": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "Third-party address ID - This ID must be unique within the origin (Origin field). As ID it is recommended to use either the Primary Key of the foreign system or a GUID (Global Unique Identifier). For example, ID \\\"629c5d97-a225-4b08-877c-e8a802c23014\\\" for origin \\\"ERP\\\".  To identify the address, either the performis address ID (BpAddrID) or the ID of the external system (ExternalBpAddrID) is required.",
+            "nullable": true
+          },
+          "Origin": {
+            "maxLength": 10,
+            "type": "string",
+            "description": "Origin of the business partner, name of the third-party system. Business partners and addresses with an origin can't be edited in performis."
+          },
+          "Active": {
+            "type": "boolean",
+            "description": "true = active, false = deleted"
+          },
+          "ShortAddress": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "Short address - Short form of the address. It is generated automatically if not supplied. The short address is used in performis to identify the address. For example, the Wiler address of Infosystem AG is abbreviated as: \\\"Infosystem AG, Wil\\\".",
+            "nullable": true
+          },
+          "OverridePartnerName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "If the name of the company on the address differs from that of the business partner, the name of the business partner can be overridden in this field. For example, if Infosystem AG is operating in German-speaking Switzerland as Infosystem AG, the name on the business partner will also be the same. For the Lausanne address, however, the name is overridden as \\\"Infosystem SA\\\".",
+            "nullable": true
+          },
+          "OverridePartnerNameAddition": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "If the name addition of the company on the address differs from that of the business partner, the name suffix of the business partner can be overridden in this field.",
+            "nullable": true
+          },
+          "Street": {
+            "maxLength": 43,
+            "type": "string",
+            "description": "Street name without house number.",
+            "nullable": true
+          },
+          "HouseNo": {
+            "maxLength": 12,
+            "type": "string",
+            "description": "House number",
+            "nullable": true
+          },
+          "POBox": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "he post office box of the address. The P.O. Box should be transferred including the country-specific text component. For example, for Switzerland \\\"Postfach 12\\\" in England \\\"PO Box 12\\\".",
+            "nullable": true
+          },
+          "AdditionalLine1": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "Additional line of an address which is neither a street nor a post office box. For example, \\\"c/o Samuel Schnelli\\\" or \\\"Office Samuel Schnelli\\\".",
+            "nullable": true
+          },
+          "AdditionalLine2": {
+            "maxLength": 200,
+            "type": "string",
+            "description": "Extended additional component of an address that is neither a street nor a post office box. For example, \\\"Floor 12\\\" or \\\"Building 15\\\".",
+            "nullable": true
+          },
+          "Country": {
+            "maxLength": 2,
+            "type": "string",
+            "description": "Country in ISO code (ISO 3166)"
+          },
+          "ZipCode": {
+            "maxLength": 20,
+            "type": "string",
+            "description": "Zipcode of the address in country-specific format. Mandatory together with the country code and the city. For example, \\\"EC1A 1AA\\\" for London, England or \\\"9500\\\" for Wil, Switzerland."
+          },
+          "City": {
+            "maxLength": 40,
+            "type": "string",
+            "description": "city"
+          },
+          "Language": {
+            "maxLength": 2,
+            "type": "string",
+            "description": "Language code in ISO-639-1"
+          },
+          "SearchTerms": {
+            "maxLength": 500,
+            "type": "string",
+            "description": "Additional search terms under which this address is found. This is often used to use well-known abbreviations as search terms. For example, \\\"IS\\\" for Infosystem AG or \\\"MS\\\" for Microsoft.",
+            "nullable": true
+          },
+          "Latitude": {
+            "maximum": 90,
+            "minimum": -90,
+            "type": "number",
+            "description": "Location latitude",
+            "format": "double",
+            "nullable": true
+          },
+          "Longitude": {
+            "maximum": 180,
+            "minimum": -180,
+            "type": "number",
+            "description": "Location longitude",
+            "format": "double",
+            "nullable": true
+          },
+          "AttributeValueSet": {
+            "$ref": "#/components/schemas/AttributeValueSetDto"
+          },
+          "CommunicationAddresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommunicationAddressDto"
+            },
+            "description": "Gets or Sets CommunicationAddresses",
+            "nullable": true
+          },
+          "Contacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContactDto"
+            },
+            "description": "Gets or Sets Contacts",
+            "nullable": true
+          },
+          "Contact2Documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Contact2DocumentDto"
+            },
+            "description": "Gets or Sets Contact2Documents",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "",
+        "x-examples": {}
+      },
       "Application": {
         "enum": [
           "B_HTR",
@@ -4070,7 +4226,8 @@
           }
         },
         "additionalProperties": false,
-        "description": "Data transfer object of a machine's driver."
+        "description": "Data transfer object of a machine's driver.",
+        "title": ""
       },
       "MachineDto": {
         "required": [
@@ -4651,7 +4808,8 @@
           }
         },
         "additionalProperties": false,
-        "description": "PrivateAddressDto"
+        "description": "PrivateAddressDto",
+        "title": ""
       },
       "ProblemDetails": {
         "type": "object",
@@ -4698,247 +4856,14 @@
           }
         },
         "additionalProperties": false,
-        "description": "Data transfer object of a machine's type of drive."
+        "description": "Data transfer object of a machine's type of drive.",
+        "title": ""
       },
       "JobDto": {
         "title": "JobDto",
         "type": "object",
         "description": "Data transfer object of a scheduling Job",
-        "x-examples": {
-          "example-1": {
-            "CompanyNo": 100,
-            "InternalJobID": 37281,
-            "ExternalJobID": "J827109-5",
-            "DetailsIncluded": "J827109-5",
-            "ReportEMailReceivers": "J827109-5",
-            "LanguageIsoCode": "J827109-5",
-            "InternalEmployeeID": "J827109-5",
-            "ExternalEmployeeID": "J827109-5",
-            "OrderNo": "J827109-5",
-            "OrderTitle": "J827109-5",
-            "JobDateTimeFrom": "2019-08-24T14:15:22Z",
-            "JobDateTimeTo": "2019-08-24T14:15:22Z",
-            "PrimaryJobLocation": {
-              "InternalLocationID": 0,
-              "ExternalLocationID": "string",
-              "InternalJobID": 1,
-              "ExternalJobID": "J827109-5",
-              "LocationType": "string",
-              "Description": "string",
-              "Street": "string",
-              "StreetNo": "string",
-              "AddressAddition": "string",
-              "ZipCode": "string",
-              "City": "string",
-              "CountryCode": 0,
-              "TransportRestriction": "string",
-              "Longitude": 0,
-              "Latitude": 0
-            },
-            "ResourceNo": 0,
-            "SchedulingGroupCode": 0,
-            "JobStatusCode": 0,
-            "ResourceTypeCode": 0,
-            "ResourceStatusCode": 0,
-            "InternalMachineID": 0,
-            "ExternalMachineID": "2019-08-24T14:15:22Z",
-            "InternalAccessoryID": 0,
-            "ExternalAccessoryID": "2019-08-24T14:15:22Z",
-            "UseCaseCode": 0,
-            "ResourceAvailableNotificaitonInternalEmployeeID": 0,
-            "ResourceAvailableNotificaitonExternalEmployeeID": "string",
-            "ResourceAvailableNotificationDateTime": "2019-08-24T14:15:22Z",
-            "Details": {
-              "ScheduleList": [
-                {
-                  "InternalJobScheduleID": 0,
-                  "ExternalJobScheduleID": "string",
-                  "InternalJobID": 1,
-                  "ExternalJobID": "J827109-5",
-                  "SortNo": 0,
-                  "Description": "string",
-                  "DateTime": "string",
-                  "IsOccupied": true
-                }
-              ],
-              "ContactList": [
-                {
-                  "InternalContactID": 0,
-                  "ExternalContactID": "string",
-                  "InternalJobID": 1,
-                  "ExternalJobID": "J827109-5",
-                  "Description": "string",
-                  "FullName": "string",
-                  "Phone": "string",
-                  "EMail": "string",
-                  "IsCustomer": true,
-                  "IsContactOnLocation": true
-                }
-              ],
-              "BookingActivityList": [
-                {
-                  "InternalBookingActivityID": 0,
-                  "ExternalBookingActivityID": "string",
-                  "ActivityCode": "string",
-                  "Activity": "not translated free text",
-                  "Active": "not translated free text"
-                }
-              ],
-              "LocationList": [
-                {
-                  "InternalLocationID": 0,
-                  "ExternalLocationID": "string",
-                  "InternalJobID": 1,
-                  "ExternalJobID": "J827109-5",
-                  "LocationType": "string",
-                  "Description": "string",
-                  "Street": "string",
-                  "StreetNo": "string",
-                  "AddressAddition": "string",
-                  "ZipCode": "string",
-                  "City": "string",
-                  "CountryCode": 0,
-                  "TransportRestriction": "string",
-                  "Longitude": 0,
-                  "Latitude": 0
-                }
-              ]
-            },
-            "DocumentList": [
-              {
-                "id": "string"
-              }
-            ],
-            "TimeStampList": [
-              {
-                "InternalJobTimestampID": 483915,
-                "ExternalJobTimestampID": "TS289182-5",
-                "InternalJobID": 1,
-                "ExternalJobID": "J827109-5",
-                "Timestamp": "2022–08–23T02:30:00+04:30",
-                "TimestampTypeCode": 0,
-                "InternalBookingActivityID": 0,
-                "ExternalBookingActivityID": "string",
-                "InternalMachineID": 0,
-                "ExternalMachineID": "MRK8938719",
-                "InternalEmployeeID": 0,
-                "ExternalEmployeeID": "TS289182-5",
-                "Comment": "string"
-              }
-            ],
-            "ReportList": [
-              {
-                "InternalReportID": 0,
-                "ExternalReportID": "string",
-                "ReportTimeStampList": [
-                  {
-                    "InternalJobReportTimestampID": 483915,
-                    "ExternalJobReportTimestampID": "TS289182-5",
-                    "InternalJobID": 1,
-                    "ExternalJobID": "J827109-5",
-                    "Timestamp": "2022–08–23T02:30:00+04:30",
-                    "TimestampTypeCode": 0,
-                    "Source": "string",
-                    "InternalBookingActivityID": 0,
-                    "ExternalBookingActivityID": "string",
-                    "InternalMachineID": 0,
-                    "ExternalMachineID": "MRK8938719",
-                    "InternalEmployeeID": 0,
-                    "ExternalEmployeeID": "TS289182-5",
-                    "Comment": "string"
-                  }
-                ],
-                "ReportSurchargeList": [
-                  {
-                    "InternalReportSurchargeID": 483915,
-                    "ExternalReportSurchargeID": "TS289182-5",
-                    "InternalJobID": 1,
-                    "ExternalJobID": "J827109-5",
-                    "InternalReportID": 0,
-                    "ExternalReportID": "string",
-                    "DateTime": "2019-08-24T14:15:22Z",
-                    "Assignment": "2019-08-24T14:15:22Z",
-                    "Quantity": 0
-                  }
-                ],
-                "EMailNotificationList": [
-                  {
-                    "InternalEMailNotificationID": 1,
-                    "ExternalEMailNotificationID": "J827109-5",
-                    "InternalJobID": 1,
-                    "ExternalJobID": "J827109-5",
-                    "InternalReportID": 0,
-                    "ExternalReportID": "string",
-                    "Sender": "string",
-                    "SendDateTime": "2019-08-24T14:15:22Z",
-                    "CreateDateTime": "2019-08-24T14:15:22Z",
-                    "CreatedByInternalEmployeeID": 0,
-                    "CreatedByExternalEmployeeID": "string",
-                    "ModifyDateTime": "2019-08-24T14:15:22Z",
-                    "ModifiedByInternalEmployeeID": 0,
-                    "ModifiedByExternalEmployeeID": "string"
-                  }
-                ]
-              }
-            ],
-            "HandOver": {
-              "InternalHandoverID": 483915,
-              "ExternalHandoverID": "TS289182-5",
-              "InternalJobID": 1,
-              "ExternalJobID": "J827109-5",
-              "InternalEmployeeID": 0,
-              "ExternalEmployeeID": "TS289182-5",
-              "HandoverDateTime": "2022–08–23T02:30:00+04:30",
-              "CustomerBriefed": "2022–08–23T02:30:00+04:30",
-              "Comment": "2022–08–23T02:30:00+04:30",
-              "CustomerName": "2022–08–23T02:30:00+04:30",
-              "CustomerSignatureImageBase64": "2022–08–23T02:30:00+04:30",
-              "CustomerSignatureImageLink": "2022–08–23T02:30:00+04:30"
-            },
-            "Return": {
-              "InternalReturnID": 483915,
-              "ExternalReturnID": "TS289182-5",
-              "InternalJobID": 1,
-              "ExternalJobID": "J827109-5",
-              "InternalEmployeeID": 0,
-              "ExternalEmployeeID": "TS289182-5",
-              "ReturnDateTime": "2022–08–23T02:30:00+04:30",
-              "Damage": "2022–08–23T02:30:00+04:30",
-              "Comment": "2022–08–23T02:30:00+04:30",
-              "CustomerName": "2022–08–23T02:30:00+04:30",
-              "CustomerSignatureImageBase64": "2022–08–23T02:30:00+04:30",
-              "CustomerSignatureImageLink": "2022–08–23T02:30:00+04:30"
-            },
-            "SurchargeList": [
-              {
-                "InternalSurchargeID": 483915,
-                "ExternalSurchargeID": "TS289182-5",
-                "InternalJobID": 1,
-                "ExternalJobID": "J827109-5",
-                "DateTime": "2019-08-24T14:15:22Z",
-                "Assignment": "2019-08-24T14:15:22Z",
-                "Quantity": 0,
-                "InternalReportID": 0,
-                "ExternalReportID": "string"
-              }
-            ],
-            "FormList": [
-              {
-                "id": "string"
-              }
-            ],
-            "ProblemList": [
-              {
-                "id": "string"
-              }
-            ],
-            "TransportDemandList": [
-              {
-                "id": "string"
-              }
-            ]
-          }
-        },
+        "x-examples": {},
         "properties": {
           "CompanyNo": {
             "maximum": 999999,
@@ -4954,35 +4879,42 @@
             "maximum": 9999999999,
             "minimum": 1,
             "example": 37281,
+            "description": "internal Job ID of performis / leva+. will be set internally - leave empty if not known.\n\nMust be submitted if external ID is not submitted.",
             "nullable": true
           },
           "ExternalJobID": {
             "type": "string",
             "example": "J827109-5",
+            "description": "external Job ID in requesting system. Can be set by the requesting system to identify a specific job. Must be unique!\n\nMust be submitted if internal ID is not submitted.",
             "nullable": true
           },
           "DetailsIncluded": {
             "type": "boolean",
-            "example": "J827109-5"
+            "example": "J827109-5",
+            "description": "Reflects the requesting parameter on wether or not the dataset includes the Details property.\n\nInclude the details only, when necessary. Use the requesting parameter to avoid unnecessary loads."
           },
           "ReportEMailReceivers": {
             "example": "J827109-5",
             "type": "string",
+            "description": "; or , seperated string of e-mail adresses to receive a report copy.\n\nNote: these addresses are set in the order header and proposed to receive a report copy. Wether or not they actually receive a report copy, is controlled by the ReportEMailNotifications submitted with the report.",
             "nullable": true
           },
           "LanguageIsoCode": {
             "type": "string",
             "example": "J827109-5",
+            "description": "two digit language code (639-1)",
             "nullable": true
           },
           "InternalEmployeeID": {
             "type": "number",
             "example": "J827109-5",
+            "description": "internal employee ID to which the job is assigned to",
             "nullable": true
           },
           "ExternalEmployeeID": {
             "type": "string",
             "example": "J827109-5",
+            "description": "external employee ID to which the job is assigned to",
             "nullable": true
           },
           "OrderNo": {
@@ -4995,70 +4927,85 @@
           },
           "JobDateTimeFrom": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "scheduled start date and time for this job"
           },
           "JobDateTimeTo": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "scheduled end date and time for this job"
           },
           "PrimaryJobLocation": {
             "$ref": "#/components/schemas/JobLocationsDto"
           },
           "ResourceNo": {
             "format": "date-time",
-            "type": "number"
+            "type": "number",
+            "description": "the resource demand number to which this job is assigned to.\n\neach order can have multiple resource demands. they are numbered 0001 onwards and are unique within the order. (similar to order-line position no., but for resource demands)"
           },
           "SchedulingGroupCode": {
             "format": "date-time",
-            "type": "number"
+            "type": "number",
+            "description": "Code 4542\nuse IF2BA to retrieve value list."
           },
           "JobStatusCode": {
             "format": "date-time",
-            "type": "number"
+            "type": "number",
+            "description": "Code 4555\nuse IF2BA to retrieve value list."
           },
           "ResourceTypeCode": {
             "format": "date-time",
-            "type": "number"
+            "type": "number",
+            "description": "Code 4550\nuse IF2BA to retrieve value list."
           },
           "ResourceStatusCode": {
             "format": "date-time",
-            "type": "number"
+            "type": "number",
+            "description": "Code 4554\nuse IF2BA to retrieve value list."
           },
           "InternalMachineID": {
             "format": "date-time",
             "type": "number",
+            "description": "internal maschine ID assigned to job",
             "nullable": true
           },
           "ExternalMachineID": {
             "format": "date-time",
             "type": "string",
+            "description": "external machine ID assigned to job",
             "nullable": true
           },
           "InternalAccessoryID": {
             "format": "date-time",
             "type": "number",
+            "description": "internal accessory ID assigned to job",
             "nullable": true
           },
           "ExternalAccessoryID": {
             "format": "date-time",
             "type": "string",
+            "description": "external accessory ID assigned to job",
             "nullable": true
           },
           "UseCaseCode": {
             "format": "date-time",
-            "type": "number"
+            "type": "number",
+            "description": "Code 6951\nuse IF2BA to retrieve value list."
           },
           "ResourceAvailableNotificaitonInternalEmployeeID": {
             "type": "number",
+            "description": "internal Employee ID who notified that the machine ressource to be available for scheduling again.",
             "nullable": true
           },
           "ResourceAvailableNotificaitonExternalEmployeeID": {
             "type": "string",
+            "description": "external Employee ID who notified that the machine ressource to be available for scheduling again.",
             "nullable": true
           },
           "ResourceAvailableNotificationDateTime": {
             "format": "date-time",
             "type": "string",
+            "description": "DateTime of notification on which the machine ressource is made available for scheduling again. (The  maschine is no longer needed on the job)\n\nNULLas long as the resource is still being used.",
             "nullable": true
           },
           "Details": {
@@ -5066,18 +5013,21 @@
           },
           "DocumentList": {
             "type": "array",
+            "description": "list of attached documents",
             "items": {
               "$ref": "#/components/schemas/JobDocumentDto"
             }
           },
           "TimeStampList": {
             "type": "array",
+            "description": "list of time stamps on this job",
             "items": {
               "$ref": "#/components/schemas/JobTimeStampDto"
             }
           },
           "ReportList": {
             "type": "array",
+            "description": "list of reports on this job",
             "items": {
               "$ref": "#/components/schemas/JobReportDto"
             }
@@ -5112,7 +5062,22 @@
               "$ref": "#/components/schemas/JobTransportDemandDto"
             }
           }
-        }
+        },
+        "required": [
+          "CompanyNo",
+          "DetailsIncluded",
+          "OrderNo",
+          "OrderTitle",
+          "JobDateTimeFrom",
+          "JobDateTimeTo",
+          "PrimaryJobLocation",
+          "ResourceNo",
+          "SchedulingGroupCode",
+          "JobStatusCode",
+          "ResourceTypeCode",
+          "ResourceStatusCode",
+          "UseCaseCode"
+        ]
       },
       "JobDetailsDto": {
         "title": "JobDetailsDto",
@@ -5272,85 +5237,8 @@
           "ActivityCode"
         ]
       },
-      "JobLocationsDto": {
-        "title": "JobLocationsDto",
-        "type": "object",
-        "description": "Data transfer object of a scheduling job (location)",
-        "properties": {
-          "InternalLocationID": {
-            "type": "number",
-            "nullable": true
-          },
-          "ExternalLocationID": {
-            "type": "string",
-            "nullable": true
-          },
-          "InternalJobID": {
-            "type": "integer",
-            "format": "int32",
-            "description": "The internal unique identifier for the job onto which the time stamp is assigned",
-            "minimum": 1,
-            "maximum": 9999999999,
-            "nullable": true
-          },
-          "ExternalJobID": {
-            "type": "string",
-            "format": "int32",
-            "description": "The external unique identifer for the job onto which the time stamp is assigned",
-            "example": "J827109-5",
-            "nullable": true
-          },
-          "LocationType": {
-            "type": "string",
-            "nullable": true
-          },
-          "Description": {
-            "type": "string",
-            "nullable": true
-          },
-          "Street": {
-            "type": "string",
-            "nullable": true
-          },
-          "StreetNo": {
-            "type": "string",
-            "nullable": true
-          },
-          "AddressAddition": {
-            "type": "string",
-            "nullable": true
-          },
-          "ZipCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "City": {
-            "type": "string",
-            "nullable": true
-          },
-          "CountryCode": {
-            "type": "number",
-            "nullable": true
-          },
-          "TransportRestriction": {
-            "type": "string",
-            "nullable": true
-          },
-          "Longitude": {
-            "type": "number",
-            "nullable": true
-          },
-          "Latitude": {
-            "type": "number",
-            "nullable": true
-          }
-        },
-        "required": [
-          "LocationType"
-        ]
-      },
       "JobTimeStampDto": {
-        "title": "TimeStampDto",
+        "title": "JobTimeStampDto",
         "type": "object",
         "description": "Data transfer object of a job time stamp",
         "properties": {
@@ -5446,7 +5334,7 @@
         ]
       },
       "JobReportDto": {
-        "title": "ReportDto",
+        "title": "JobReportDto",
         "type": "object",
         "description": "Data transfer object of a job report",
         "properties": {
@@ -5578,6 +5466,39 @@
           "TimestampTypeCode",
           "Source",
           "InternalEmployeeID"
+        ]
+      },
+      "JobLocationsDto": {
+        "title": "JobLocationsDto",
+        "type": "object",
+        "description": "Data transfer object of a scheduling job (location)",
+        "properties": {
+          "InternalLocationID": {
+            "type": "number",
+            "nullable": true
+          },
+          "ExternalLocationID": {
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "LocationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "TransportRestriction": {
+            "type": "string",
+            "nullable": true
+          },
+          "Adress": {
+            "$ref": "#/components/schemas/AddressDto"
+          }
+        },
+        "required": [
+          "LocationType"
         ]
       },
       "JobReportSurchargeDto": {
@@ -5734,7 +5655,7 @@
         }
       },
       "JobHandOverDto": {
-        "title": "HandOverDto",
+        "title": "JobHandOverDto",
         "type": "object",
         "description": "Data transfer object of a job handover",
         "properties": {
@@ -5831,7 +5752,7 @@
         ]
       },
       "JobReturnDto": {
-        "title": "ReturnDto",
+        "title": "JobReturnDto",
         "type": "object",
         "description": "Data transfer object of a job return",
         "properties": {
@@ -5924,7 +5845,7 @@
         ]
       },
       "JobSurchargeDto": {
-        "title": "SurchargeDto",
+        "title": "JobSurchargeDto",
         "type": "object",
         "description": "Data transfer object of a job surcharge",
         "properties": {
@@ -5985,7 +5906,7 @@
         }
       },
       "JobFormDto": {
-        "title": "FormDto",
+        "title": "JobFormDto",
         "type": "object",
         "properties": {
           "id": {
@@ -5995,7 +5916,7 @@
         "description": "Data transfer object of a job form"
       },
       "JobProblemDto": {
-        "title": "ProblemDto",
+        "title": "JobProblemDto",
         "type": "object",
         "properties": {
           "id": {
@@ -6023,104 +5944,6 @@
           }
         },
         "description": "Data transfer object of a job transport demand"
-      },
-      "TimeSample": {
-        "title": "TimeSample",
-        "type": "object",
-        "description": "SAMPLE - will be deleted later!",
-        "properties": {
-          "TimeStampDateTime": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2009-06-30T18:30:00+02:00"
-          },
-          "TimeStampDateTimeUTC": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2009-06-30T18:30:00"
-          },
-          "TimeStampDateTimeOffeset": {
-            "type": "string",
-            "example": "+02:00"
-          }
-        },
-        "x-examples": {
-          "example-1": {
-            "TimeStampDateTime": "2009-06-30T18:30:00+02:00",
-            "TimeStampDateTimeUTC": "2009-06-30T18:30:00",
-            "TimeStampDateTimeOffeset": "+02:00"
-          }
-        }
-      },
-      "TranslationSample": {
-        "title": "TranslationSample",
-        "type": "object",
-        "description": "SAMPLE - will be deleted later!",
-        "x-examples": {
-          "example-1": {
-            "Message": "Your current job requires additional time stamps for completion.",
-            "LanguageISOCode": "EN"
-          }
-        },
-        "properties": {
-          "Message": {
-            "type": "string",
-            "example": "Your current job requires additional time stamps for completion."
-          },
-          "MessageLanguageISOCode": {
-            "type": "string",
-            "example": "EN",
-            "description": "ISO 639-1"
-          }
-        }
-      },
-      "FieldBlockingSample": {
-        "title": "FieldBlockingSample",
-        "type": "object",
-        "description": "SAMPLE - will be deleted later!",
-        "x-examples": {
-          "example-1": {
-            "Origin": "BC365",
-            "ExternalID": "string",
-            "FirstName": "Josephine",
-            "LastName": "Smith",
-            "SchedulingGroupCode": 45420009
-          }
-        },
-        "properties": {
-          "Origin": {
-            "type": "string",
-            "example": "BC365",
-            "nullable": true
-          },
-          "ExternalID": {
-            "type": "string",
-            "description": "ISO 639-1",
-            "nullable": true
-          },
-          "FirstName": {
-            "type": "string",
-            "description": "ISO 639-1",
-            "example": "Josephine"
-          },
-          "LastName": {
-            "type": "string",
-            "description": "ISO 639-1",
-            "example": "Smith"
-          },
-          "SchedulingGroupCode": {
-            "type": "number",
-            "description": "ISO 639-1",
-            "example": 45420009,
-            "nullable": true
-          }
-        }
-      },
-      "DocumentSample": {
-        "title": "DocumentSample",
-        "type": "object",
-        "description": "SAMPLE - will be deleted later!",
-        "x-examples": {}
       }
     },
     "securitySchemes": {
