@@ -1073,6 +1073,16 @@
             }
           },
           {
+            "name": "IncludeDetails",
+            "in": "query",
+            "schema": {
+              "maxLength": 50,
+              "type": "boolean",
+              "default": "true"
+            },
+            "description": "Wether or not to retrieve job details with this call"
+          },
+          {
             "name": "X-RequestingSystem",
             "in": "header",
             "description": "Identifing the system calling the service.",
@@ -3309,6 +3319,18 @@
           "SchedulingJob"
         ]
       }
+    },
+    "/api/v3/scheduling/Job/BookingActivity": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-api-v3-scheduling-Job-BookingActivity"
+      }
     }
   },
   "components": {
@@ -3681,7 +3703,29 @@
           }
         },
         "additionalProperties": false,
-        "description": "CodeDto"
+        "description": "CodeDto",
+        "x-examples": {
+          "example-1": {
+            "ChangeID": 1,
+            "ChangeDate": "string",
+            "CodeID": 1,
+            "Active": true,
+            "CodeType": 1,
+            "CompanyNo": 1,
+            "CodeNo": 1,
+            "Text": "string",
+            "ShortText": "string",
+            "CodeDetails": [
+              {
+                "CodeDetailID": 1,
+                "DetailNo": 1,
+                "CodeID": 1,
+                "Value": "string",
+                "ValueNumeric": 0
+              }
+            ]
+          }
+        }
       },
       "CodeValueDto": {
         "required": [
@@ -4657,8 +4701,244 @@
         "description": "Data transfer object of a machine's type of drive."
       },
       "JobDto": {
-        "title": "SchedulingJobDto",
+        "title": "JobDto",
         "type": "object",
+        "description": "Data transfer object of a scheduling Job",
+        "x-examples": {
+          "example-1": {
+            "CompanyNo": 100,
+            "InternalJobID": 37281,
+            "ExternalJobID": "J827109-5",
+            "DetailsIncluded": "J827109-5",
+            "ReportEMailReceivers": "J827109-5",
+            "LanguageIsoCode": "J827109-5",
+            "InternalEmployeeID": "J827109-5",
+            "ExternalEmployeeID": "J827109-5",
+            "OrderNo": "J827109-5",
+            "OrderTitle": "J827109-5",
+            "JobDateTimeFrom": "2019-08-24T14:15:22Z",
+            "JobDateTimeTo": "2019-08-24T14:15:22Z",
+            "PrimaryJobLocation": {
+              "InternalLocationID": 0,
+              "ExternalLocationID": "string",
+              "InternalJobID": 1,
+              "ExternalJobID": "J827109-5",
+              "LocationType": "string",
+              "Description": "string",
+              "Street": "string",
+              "StreetNo": "string",
+              "AddressAddition": "string",
+              "ZipCode": "string",
+              "City": "string",
+              "CountryCode": 0,
+              "TransportRestriction": "string",
+              "Longitude": 0,
+              "Latitude": 0
+            },
+            "ResourceNo": 0,
+            "SchedulingGroupCode": 0,
+            "JobStatusCode": 0,
+            "ResourceTypeCode": 0,
+            "ResourceStatusCode": 0,
+            "InternalMachineID": 0,
+            "ExternalMachineID": "2019-08-24T14:15:22Z",
+            "InternalAccessoryID": 0,
+            "ExternalAccessoryID": "2019-08-24T14:15:22Z",
+            "UseCaseCode": 0,
+            "ResourceAvailableNotificaitonInternalEmployeeID": 0,
+            "ResourceAvailableNotificaitonExternalEmployeeID": "string",
+            "ResourceAvailableNotificationDateTime": "2019-08-24T14:15:22Z",
+            "Details": {
+              "ScheduleList": [
+                {
+                  "InternalJobScheduleID": 0,
+                  "ExternalJobScheduleID": "string",
+                  "InternalJobID": 1,
+                  "ExternalJobID": "J827109-5",
+                  "SortNo": 0,
+                  "Description": "string",
+                  "DateTime": "string",
+                  "IsOccupied": true
+                }
+              ],
+              "ContactList": [
+                {
+                  "InternalContactID": 0,
+                  "ExternalContactID": "string",
+                  "InternalJobID": 1,
+                  "ExternalJobID": "J827109-5",
+                  "Description": "string",
+                  "FullName": "string",
+                  "Phone": "string",
+                  "EMail": "string",
+                  "IsCustomer": true,
+                  "IsContactOnLocation": true
+                }
+              ],
+              "BookingActivityList": [
+                {
+                  "InternalBookingActivityID": 0,
+                  "ExternalBookingActivityID": "string",
+                  "ActivityCode": "string",
+                  "Activity": "not translated free text",
+                  "Active": "not translated free text"
+                }
+              ],
+              "LocationList": [
+                {
+                  "InternalLocationID": 0,
+                  "ExternalLocationID": "string",
+                  "InternalJobID": 1,
+                  "ExternalJobID": "J827109-5",
+                  "LocationType": "string",
+                  "Description": "string",
+                  "Street": "string",
+                  "StreetNo": "string",
+                  "AddressAddition": "string",
+                  "ZipCode": "string",
+                  "City": "string",
+                  "CountryCode": 0,
+                  "TransportRestriction": "string",
+                  "Longitude": 0,
+                  "Latitude": 0
+                }
+              ]
+            },
+            "DocumentList": [
+              {
+                "id": "string"
+              }
+            ],
+            "TimeStampList": [
+              {
+                "InternalJobTimestampID": 483915,
+                "ExternalJobTimestampID": "TS289182-5",
+                "InternalJobID": 1,
+                "ExternalJobID": "J827109-5",
+                "Timestamp": "2022–08–23T02:30:00+04:30",
+                "TimestampTypeCode": 0,
+                "InternalBookingActivityID": 0,
+                "ExternalBookingActivityID": "string",
+                "InternalMachineID": 0,
+                "ExternalMachineID": "MRK8938719",
+                "InternalEmployeeID": 0,
+                "ExternalEmployeeID": "TS289182-5",
+                "Comment": "string"
+              }
+            ],
+            "ReportList": [
+              {
+                "InternalReportID": 0,
+                "ExternalReportID": "string",
+                "ReportTimeStampList": [
+                  {
+                    "InternalJobReportTimestampID": 483915,
+                    "ExternalJobReportTimestampID": "TS289182-5",
+                    "InternalJobID": 1,
+                    "ExternalJobID": "J827109-5",
+                    "Timestamp": "2022–08–23T02:30:00+04:30",
+                    "TimestampTypeCode": 0,
+                    "Source": "string",
+                    "InternalBookingActivityID": 0,
+                    "ExternalBookingActivityID": "string",
+                    "InternalMachineID": 0,
+                    "ExternalMachineID": "MRK8938719",
+                    "InternalEmployeeID": 0,
+                    "ExternalEmployeeID": "TS289182-5",
+                    "Comment": "string"
+                  }
+                ],
+                "ReportSurchargeList": [
+                  {
+                    "InternalReportSurchargeID": 483915,
+                    "ExternalReportSurchargeID": "TS289182-5",
+                    "InternalJobID": 1,
+                    "ExternalJobID": "J827109-5",
+                    "InternalReportID": 0,
+                    "ExternalReportID": "string",
+                    "DateTime": "2019-08-24T14:15:22Z",
+                    "Assignment": "2019-08-24T14:15:22Z",
+                    "Quantity": 0
+                  }
+                ],
+                "EMailNotificationList": [
+                  {
+                    "InternalEMailNotificationID": 1,
+                    "ExternalEMailNotificationID": "J827109-5",
+                    "InternalJobID": 1,
+                    "ExternalJobID": "J827109-5",
+                    "InternalReportID": 0,
+                    "ExternalReportID": "string",
+                    "Sender": "string",
+                    "SendDateTime": "2019-08-24T14:15:22Z",
+                    "CreateDateTime": "2019-08-24T14:15:22Z",
+                    "CreatedByInternalEmployeeID": 0,
+                    "CreatedByExternalEmployeeID": "string",
+                    "ModifyDateTime": "2019-08-24T14:15:22Z",
+                    "ModifiedByInternalEmployeeID": 0,
+                    "ModifiedByExternalEmployeeID": "string"
+                  }
+                ]
+              }
+            ],
+            "HandOver": {
+              "InternalHandoverID": 483915,
+              "ExternalHandoverID": "TS289182-5",
+              "InternalJobID": 1,
+              "ExternalJobID": "J827109-5",
+              "InternalEmployeeID": 0,
+              "ExternalEmployeeID": "TS289182-5",
+              "HandoverDateTime": "2022–08–23T02:30:00+04:30",
+              "CustomerBriefed": "2022–08–23T02:30:00+04:30",
+              "Comment": "2022–08–23T02:30:00+04:30",
+              "CustomerName": "2022–08–23T02:30:00+04:30",
+              "CustomerSignatureImageBase64": "2022–08–23T02:30:00+04:30",
+              "CustomerSignatureImageLink": "2022–08–23T02:30:00+04:30"
+            },
+            "Return": {
+              "InternalReturnID": 483915,
+              "ExternalReturnID": "TS289182-5",
+              "InternalJobID": 1,
+              "ExternalJobID": "J827109-5",
+              "InternalEmployeeID": 0,
+              "ExternalEmployeeID": "TS289182-5",
+              "ReturnDateTime": "2022–08–23T02:30:00+04:30",
+              "Damage": "2022–08–23T02:30:00+04:30",
+              "Comment": "2022–08–23T02:30:00+04:30",
+              "CustomerName": "2022–08–23T02:30:00+04:30",
+              "CustomerSignatureImageBase64": "2022–08–23T02:30:00+04:30",
+              "CustomerSignatureImageLink": "2022–08–23T02:30:00+04:30"
+            },
+            "SurchargeList": [
+              {
+                "InternalSurchargeID": 483915,
+                "ExternalSurchargeID": "TS289182-5",
+                "InternalJobID": 1,
+                "ExternalJobID": "J827109-5",
+                "DateTime": "2019-08-24T14:15:22Z",
+                "Assignment": "2019-08-24T14:15:22Z",
+                "Quantity": 0,
+                "InternalReportID": 0,
+                "ExternalReportID": "string"
+              }
+            ],
+            "FormList": [
+              {
+                "id": "string"
+              }
+            ],
+            "ProblemList": [
+              {
+                "id": "string"
+              }
+            ],
+            "TransportDemandList": [
+              {
+                "id": "string"
+              }
+            ]
+          }
+        },
         "properties": {
           "CompanyNo": {
             "maximum": 999999,
@@ -4669,16 +4949,116 @@
             "example": 100,
             "nullable": true
           },
-          "internalJobID": {
+          "InternalJobID": {
             "type": "number",
             "maximum": 9999999999,
             "minimum": 1,
             "example": 37281,
             "nullable": true
           },
-          "externalJobID": {
+          "ExternalJobID": {
             "type": "string",
             "example": "J827109-5",
+            "nullable": true
+          },
+          "DetailsIncluded": {
+            "type": "boolean",
+            "example": "J827109-5"
+          },
+          "ReportEMailReceivers": {
+            "example": "J827109-5",
+            "type": "string",
+            "nullable": true
+          },
+          "LanguageIsoCode": {
+            "type": "string",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "InternalEmployeeID": {
+            "type": "number",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "ExternalEmployeeID": {
+            "type": "string",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "OrderNo": {
+            "type": "string",
+            "example": "J827109-5"
+          },
+          "OrderTitle": {
+            "type": "string",
+            "example": "J827109-5"
+          },
+          "JobDateTimeFrom": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "JobDateTimeTo": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "PrimaryJobLocation": {
+            "$ref": "#/components/schemas/JobLocationsDto"
+          },
+          "ResourceNo": {
+            "format": "date-time",
+            "type": "number"
+          },
+          "SchedulingGroupCode": {
+            "format": "date-time",
+            "type": "number"
+          },
+          "JobStatusCode": {
+            "format": "date-time",
+            "type": "number"
+          },
+          "ResourceTypeCode": {
+            "format": "date-time",
+            "type": "number"
+          },
+          "ResourceStatusCode": {
+            "format": "date-time",
+            "type": "number"
+          },
+          "InternalMachineID": {
+            "format": "date-time",
+            "type": "number",
+            "nullable": true
+          },
+          "ExternalMachineID": {
+            "format": "date-time",
+            "type": "string",
+            "nullable": true
+          },
+          "InternalAccessoryID": {
+            "format": "date-time",
+            "type": "number",
+            "nullable": true
+          },
+          "ExternalAccessoryID": {
+            "format": "date-time",
+            "type": "string",
+            "nullable": true
+          },
+          "UseCaseCode": {
+            "format": "date-time",
+            "type": "number"
+          },
+          "ResourceAvailableNotificaitonInternalEmployeeID": {
+            "type": "number",
+            "nullable": true
+          },
+          "ResourceAvailableNotificaitonExternalEmployeeID": {
+            "type": "string",
+            "nullable": true
+          },
+          "ResourceAvailableNotificationDateTime": {
+            "format": "date-time",
+            "type": "string",
             "nullable": true
           },
           "Details": {
@@ -4696,8 +5076,11 @@
               "$ref": "#/components/schemas/JobTimeStampDto"
             }
           },
-          "Report": {
-            "$ref": "#/components/schemas/JobReportDto"
+          "ReportList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobReportDto"
+            }
           },
           "HandOver": {
             "$ref": "#/components/schemas/JobHandOverDto"
@@ -4729,23 +5112,53 @@
               "$ref": "#/components/schemas/JobTransportDemandDto"
             }
           }
-        },
-        "description": "Data transfer object of a scheduling Job"
+        }
       },
       "JobDetailsDto": {
         "title": "JobDetailsDto",
-        "type": "object",
         "description": "Data transfer object of a scheduling job (details)",
+        "x-examples": {},
+        "type": "object",
         "properties": {
-          "TBD": {
-            "type": "string"
+          "ScheduleList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobScheduleDto"
+            }
+          },
+          "ContactList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobContactDto"
+            }
+          },
+          "BookingActivityList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobBookingActivityDto"
+            }
+          },
+          "LocationList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobLocationsDto"
+            }
           }
         }
       },
-      "JobTimeStampDto": {
-        "title": "TimeStampDto",
+      "JobScheduleDto": {
+        "title": "JobScheduleDto",
         "type": "object",
+        "description": "Data transfer object of a scheduling job (job schedule)",
         "properties": {
+          "InternalJobScheduleID": {
+            "type": "number",
+            "nullable": true
+          },
+          "ExternalJobScheduleID": {
+            "type": "string",
+            "nullable": true
+          },
           "InternalJobID": {
             "type": "integer",
             "format": "int32",
@@ -4761,6 +5174,186 @@
             "example": "J827109-5",
             "nullable": true
           },
+          "SortNo": {
+            "type": "number"
+          },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "DateTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "IsOccupied": {
+            "type": "boolean"
+          }
+        }
+      },
+      "JobContactDto": {
+        "title": "JobContactDto",
+        "type": "object",
+        "description": "Data transfer object of a scheduling job (contact)",
+        "properties": {
+          "InternalContactID": {
+            "type": "number",
+            "nullable": true
+          },
+          "ExternalContactID": {
+            "type": "string",
+            "nullable": true
+          },
+          "InternalJobID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job onto which the time stamp is assigned",
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalJobID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "FullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "EMail": {
+            "type": "string",
+            "nullable": true
+          },
+          "IsCustomer": {
+            "type": "boolean"
+          },
+          "IsContactOnLocation": {
+            "type": "boolean"
+          }
+        }
+      },
+      "JobBookingActivityDto": {
+        "title": "JobBookingActivityDto",
+        "type": "object",
+        "description": "Data transfer object of a scheduling job (booking activity)",
+        "properties": {
+          "InternalBookingActivityID": {
+            "type": "number",
+            "nullable": true
+          },
+          "ExternalBookingActivityID": {
+            "type": "string",
+            "nullable": true
+          },
+          "ActivityCode": {
+            "type": "string"
+          },
+          "Activity": {
+            "type": "string",
+            "example": "not translated free text",
+            "nullable": true
+          },
+          "Active": {
+            "example": "not translated free text",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "ActivityCode"
+        ]
+      },
+      "JobLocationsDto": {
+        "title": "JobLocationsDto",
+        "type": "object",
+        "description": "Data transfer object of a scheduling job (location)",
+        "properties": {
+          "InternalLocationID": {
+            "type": "number",
+            "nullable": true
+          },
+          "ExternalLocationID": {
+            "type": "string",
+            "nullable": true
+          },
+          "InternalJobID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job onto which the time stamp is assigned",
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalJobID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "LocationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "Street": {
+            "type": "string",
+            "nullable": true
+          },
+          "StreetNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "AddressAddition": {
+            "type": "string",
+            "nullable": true
+          },
+          "ZipCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "City": {
+            "type": "string",
+            "nullable": true
+          },
+          "CountryCode": {
+            "type": "number",
+            "nullable": true
+          },
+          "TransportRestriction": {
+            "type": "string",
+            "nullable": true
+          },
+          "Longitude": {
+            "type": "number",
+            "nullable": true
+          },
+          "Latitude": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": [
+          "LocationType"
+        ]
+      },
+      "JobTimeStampDto": {
+        "title": "TimeStampDto",
+        "type": "object",
+        "description": "Data transfer object of a job time stamp",
+        "properties": {
           "InternalJobTimestampID": {
             "type": "integer",
             "format": "int32",
@@ -4777,24 +5370,49 @@
             "example": "TS289182-5",
             "nullable": true
           },
+          "InternalJobID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job onto which the time stamp is assigned",
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalJobID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "J827109-5",
+            "nullable": true
+          },
           "Timestamp": {
             "type": "string",
             "format": "date",
-            "description": "The timestamp associated with the job."
+            "description": "The timestamp associated with the job.",
+            "example": "2022–08–23T02:30:00+04:30"
           },
-          "TimestampType": {
+          "TimestampTypeCode": {
             "type": "integer",
             "format": "int32",
             "description": "The type of timestamp (TimestampType)."
           },
-          "Comment": {
+          "InternalBookingActivityID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The identifier for resource booking activity.",
+            "nullable": true
+          },
+          "ExternalBookingActivityID": {
             "type": "string",
-            "description": "A comment associated with the timestamp."
+            "format": "int32",
+            "description": "The identifier for resource booking activity.",
+            "nullable": true
           },
           "InternalMachineID": {
             "type": "integer",
             "format": "int32",
-            "description": "The identifier for the machine."
+            "description": "The identifier for the machine.",
+            "nullable": true
           },
           "ExternalMachineID": {
             "type": "string",
@@ -4815,57 +5433,556 @@
             "example": "TS289182-5",
             "nullable": true
           },
-          "ResourceBookingActivityID": {
-            "type": "integer",
-            "format": "int32",
-            "description": "The identifier for resource booking activity."
+          "Comment": {
+            "type": "string",
+            "description": "A comment associated with the timestamp.",
+            "nullable": true
           }
         },
         "required": [
           "Timestamp",
-          "TimestampType"
-        ],
-        "description": "Data transfer object of a job time stamp"
+          "TimestampTypeCode",
+          "InternalEmployeeID"
+        ]
       },
       "JobReportDto": {
         "title": "ReportDto",
         "type": "object",
+        "description": "Data transfer object of a job report",
         "properties": {
-          "id": {
-            "type": "string"
+          "InternalReportID": {
+            "type": "number",
+            "nullable": true
+          },
+          "ExternalReportID": {
+            "type": "string",
+            "nullable": true
+          },
+          "ReportTimeStampList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobReportTimeStampDto"
+            }
+          },
+          "ReportSurchargeList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobReportSurchargeDto"
+            }
+          },
+          "EMailNotificationList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobReportEMailNotificationDto"
+            }
+          }
+        }
+      },
+      "JobReportTimeStampDto": {
+        "title": "JobReportTimeStampDto",
+        "type": "object",
+        "description": "Data transfer object of a job report time stamp",
+        "properties": {
+          "InternalJobReportTimestampID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job timestamp.",
+            "example": 483915,
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalJobReportTimestampID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "TS289182-5",
+            "nullable": true
+          },
+          "InternalJobID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job onto which the time stamp is assigned",
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalJobID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "Timestamp": {
+            "type": "string",
+            "format": "date",
+            "description": "The timestamp associated with the job.",
+            "example": "2022–08–23T02:30:00+04:30"
+          },
+          "TimestampTypeCode": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The type of timestamp (TimestampType)."
+          },
+          "Source": {
+            "type": "string",
+            "format": "int32",
+            "description": "The type of timestamp (TimestampType)."
+          },
+          "InternalBookingActivityID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The identifier for resource booking activity.",
+            "nullable": true
+          },
+          "ExternalBookingActivityID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The identifier for resource booking activity.",
+            "nullable": true
+          },
+          "InternalMachineID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The identifier for the machine.",
+            "nullable": true
+          },
+          "ExternalMachineID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the the machine this job time stamp is assigned to",
+            "example": "MRK8938719",
+            "nullable": true
+          },
+          "InternalEmployeeID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal identifier for the employee."
+          },
+          "ExternalEmployeeID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the the employee this job time stamp is assigned to",
+            "example": "TS289182-5",
+            "nullable": true
+          },
+          "Comment": {
+            "type": "string",
+            "description": "A comment associated with the timestamp.",
+            "nullable": true
           }
         },
-        "description": "Data transfer object of a job report"
+        "required": [
+          "Timestamp",
+          "TimestampTypeCode",
+          "Source",
+          "InternalEmployeeID"
+        ]
+      },
+      "JobReportSurchargeDto": {
+        "title": "JobReportSurchargeDto",
+        "type": "object",
+        "description": "Data transfer object of a job report (surcharge)",
+        "properties": {
+          "InternalReportSurchargeID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job timestamp.",
+            "example": 483915,
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalReportSurchargeID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "TS289182-5",
+            "nullable": true
+          },
+          "InternalJobID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job onto which the time stamp is assigned",
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalJobID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "InternalReportID": {
+            "type": "number",
+            "nullable": true
+          },
+          "ExternalReportID": {
+            "type": "string",
+            "nullable": true
+          },
+          "DateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned"
+          },
+          "Assignment": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned"
+          },
+          "Quantity": {
+            "type": "number",
+            "format": "float",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned"
+          }
+        }
+      },
+      "JobReportEMailNotificationDto": {
+        "title": "JobReportSurchargeDto",
+        "type": "object",
+        "description": "Data transfer object of a job report (surcharge)",
+        "properties": {
+          "InternalEMailNotificationID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job onto which the time stamp is assigned",
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalEMailNotificationID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "InternalJobID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job onto which the time stamp is assigned",
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalJobID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "InternalReportID": {
+            "type": "number",
+            "nullable": true
+          },
+          "ExternalReportID": {
+            "type": "string",
+            "nullable": true
+          },
+          "Sender": {
+            "type": "string",
+            "format": "float",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "nullable": true
+          },
+          "SendDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "nullable": true
+          },
+          "CreateDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned"
+          },
+          "CreatedByInternalEmployeeID": {
+            "type": "number",
+            "format": "float",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "nullable": true
+          },
+          "CreatedByExternalEmployeeID": {
+            "type": "string",
+            "format": "float",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "nullable": true
+          },
+          "ModifyDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "nullable": true
+          },
+          "ModifiedByInternalEmployeeID": {
+            "type": "number",
+            "format": "float",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "nullable": true
+          },
+          "ModifiedByExternalEmployeeID": {
+            "type": "string",
+            "format": "float",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "nullable": true
+          }
+        }
       },
       "JobHandOverDto": {
         "title": "HandOverDto",
         "type": "object",
+        "description": "Data transfer object of a job handover",
         "properties": {
-          "id": {
-            "type": "string"
+          "InternalHandoverID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job timestamp.",
+            "example": 483915,
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalHandoverID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "TS289182-5",
+            "nullable": true
+          },
+          "InternalJobID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job onto which the time stamp is assigned",
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalJobID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "InternalEmployeeID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal identifier for the employee."
+          },
+          "ExternalEmployeeID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the the employee this job time stamp is assigned to",
+            "example": "TS289182-5",
+            "nullable": true
+          },
+          "HandoverDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "WICHTIG: beschreibung mit 'per' Zeistempelung, bedeuted dass die Übergabe abgeschlossen ist und der Einsazt beginnt.",
+            "example": "2022–08–23T02:30:00+04:30"
+          },
+          "CustomerBriefed": {
+            "type": "boolean",
+            "format": "date",
+            "description": "The timestamp associated with the job.",
+            "example": "2022–08–23T02:30:00+04:30"
+          },
+          "Comment": {
+            "type": "string",
+            "format": "date",
+            "description": "The timestamp associated with the job.",
+            "example": "2022–08–23T02:30:00+04:30",
+            "nullable": true
+          },
+          "CustomerName": {
+            "type": "string",
+            "format": "date",
+            "description": "The timestamp associated with the job.",
+            "example": "2022–08–23T02:30:00+04:30",
+            "nullable": true
+          },
+          "CustomerSignatureImageBase64": {
+            "format": "date",
+            "description": "The timestamp associated with the job.",
+            "example": "2022–08–23T02:30:00+04:30",
+            "type": "string",
+            "nullable": true
+          },
+          "CustomerSignatureImageLink": {
+            "format": "date",
+            "description": "The timestamp associated with the job.",
+            "example": "2022–08–23T02:30:00+04:30",
+            "type": "string",
+            "nullable": true
           }
         },
-        "description": "Data transfer object of a job handover"
+        "required": [
+          "HandoverDateTime",
+          "CustomerBriefed",
+          "CustomerName",
+          "CustomerSignatureImageBase64",
+          "CustomerSignatureImageLink"
+        ]
       },
       "JobReturnDto": {
         "title": "ReturnDto",
         "type": "object",
+        "description": "Data transfer object of a job return",
         "properties": {
-          "id": {
-            "type": "string"
+          "InternalReturnID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job timestamp.",
+            "example": 483915,
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalReturnID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "TS289182-5",
+            "nullable": true
+          },
+          "InternalJobID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job onto which the time stamp is assigned",
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalJobID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "InternalEmployeeID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal identifier for the employee."
+          },
+          "ExternalEmployeeID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the the employee this job time stamp is assigned to",
+            "example": "TS289182-5",
+            "nullable": true
+          },
+          "ReturnDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022–08–23T02:30:00+04:30",
+            "description": "> WICHTIG: beschreibung mit \"PER\" Rücknahme begonnen, weil beeindet den Einsatz \"per\" zeitstempelung"
+          },
+          "Damage": {
+            "type": "boolean",
+            "format": "date",
+            "description": "The timestamp associated with the job.",
+            "example": "2022–08–23T02:30:00+04:30"
+          },
+          "Comment": {
+            "type": "string",
+            "format": "date",
+            "description": "The timestamp associated with the job.",
+            "example": "2022–08–23T02:30:00+04:30",
+            "nullable": true
+          },
+          "CustomerName": {
+            "type": "string",
+            "format": "date",
+            "description": "The timestamp associated with the job.",
+            "example": "2022–08–23T02:30:00+04:30",
+            "nullable": true
+          },
+          "CustomerSignatureImageBase64": {
+            "format": "date",
+            "description": "The timestamp associated with the job.",
+            "example": "2022–08–23T02:30:00+04:30",
+            "type": "string",
+            "nullable": true
+          },
+          "CustomerSignatureImageLink": {
+            "format": "date",
+            "description": "The timestamp associated with the job.",
+            "example": "2022–08–23T02:30:00+04:30",
+            "type": "string",
+            "nullable": true
           }
         },
-        "description": "Data transfer object of a job return"
+        "required": [
+          "Damage"
+        ]
       },
       "JobSurchargeDto": {
         "title": "SurchargeDto",
         "type": "object",
+        "description": "Data transfer object of a job surcharge",
         "properties": {
-          "id": {
-            "type": "string"
+          "InternalSurchargeID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job timestamp.",
+            "example": 483915,
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalSurchargeID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "TS289182-5",
+            "nullable": true
+          },
+          "InternalJobID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job onto which the time stamp is assigned",
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalJobID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "DateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned"
+          },
+          "Assignment": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned"
+          },
+          "Quantity": {
+            "type": "number",
+            "format": "float",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned"
+          },
+          "InternalReportID": {
+            "type": "number",
+            "nullable": true
+          },
+          "ExternalReportID": {
+            "type": "string",
+            "nullable": true
           }
-        },
-        "description": "Data transfer object of a job surcharge"
+        }
       },
       "JobFormDto": {
         "title": "FormDto",
@@ -4906,6 +6023,104 @@
           }
         },
         "description": "Data transfer object of a job transport demand"
+      },
+      "TimeSample": {
+        "title": "TimeSample",
+        "type": "object",
+        "description": "SAMPLE - will be deleted later!",
+        "properties": {
+          "TimeStampDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2009-06-30T18:30:00+02:00"
+          },
+          "TimeStampDateTimeUTC": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2009-06-30T18:30:00"
+          },
+          "TimeStampDateTimeOffeset": {
+            "type": "string",
+            "example": "+02:00"
+          }
+        },
+        "x-examples": {
+          "example-1": {
+            "TimeStampDateTime": "2009-06-30T18:30:00+02:00",
+            "TimeStampDateTimeUTC": "2009-06-30T18:30:00",
+            "TimeStampDateTimeOffeset": "+02:00"
+          }
+        }
+      },
+      "TranslationSample": {
+        "title": "TranslationSample",
+        "type": "object",
+        "description": "SAMPLE - will be deleted later!",
+        "x-examples": {
+          "example-1": {
+            "Message": "Your current job requires additional time stamps for completion.",
+            "LanguageISOCode": "EN"
+          }
+        },
+        "properties": {
+          "Message": {
+            "type": "string",
+            "example": "Your current job requires additional time stamps for completion."
+          },
+          "MessageLanguageISOCode": {
+            "type": "string",
+            "example": "EN",
+            "description": "ISO 639-1"
+          }
+        }
+      },
+      "FieldBlockingSample": {
+        "title": "FieldBlockingSample",
+        "type": "object",
+        "description": "SAMPLE - will be deleted later!",
+        "x-examples": {
+          "example-1": {
+            "Origin": "BC365",
+            "ExternalID": "string",
+            "FirstName": "Josephine",
+            "LastName": "Smith",
+            "SchedulingGroupCode": 45420009
+          }
+        },
+        "properties": {
+          "Origin": {
+            "type": "string",
+            "example": "BC365",
+            "nullable": true
+          },
+          "ExternalID": {
+            "type": "string",
+            "description": "ISO 639-1",
+            "nullable": true
+          },
+          "FirstName": {
+            "type": "string",
+            "description": "ISO 639-1",
+            "example": "Josephine"
+          },
+          "LastName": {
+            "type": "string",
+            "description": "ISO 639-1",
+            "example": "Smith"
+          },
+          "SchedulingGroupCode": {
+            "type": "number",
+            "description": "ISO 639-1",
+            "example": 45420009,
+            "nullable": true
+          }
+        }
+      },
+      "DocumentSample": {
+        "title": "DocumentSample",
+        "type": "object",
+        "description": "SAMPLE - will be deleted later!",
+        "x-examples": {}
       }
     },
     "securitySchemes": {

@@ -953,7 +953,8 @@
           }
         },
         "additionalProperties": false,
-        "description": ""
+        "description": "",
+        "x-examples": {}
       },
       "PartnerDto": {
         "required": [
