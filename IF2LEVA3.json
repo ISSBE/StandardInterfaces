@@ -5040,24 +5040,28 @@
           },
           "SurchargeList": {
             "type": "array",
+            "description": "surcharges which were added to the job",
             "items": {
               "$ref": "#/components/schemas/JobSurchargeDto"
             }
           },
           "FormList": {
             "type": "array",
+            "description": "forms that were added to the job",
             "items": {
               "$ref": "#/components/schemas/JobFormDto"
             }
           },
           "ProblemList": {
             "type": "array",
+            "description": "conditions related to the jobs machine or accessory.",
             "items": {
               "$ref": "#/components/schemas/JobProblemDto"
             }
           },
           "TransportDemandList": {
             "type": "array",
+            "description": "on ",
             "items": {
               "$ref": "#/components/schemas/JobTransportDemandDto"
             }
@@ -5918,12 +5922,112 @@
       "JobProblemDto": {
         "title": "JobProblemDto",
         "type": "object",
+        "description": "Data transfer object of a job problem",
         "properties": {
-          "id": {
-            "type": "string"
+          "InternalProblemID": {
+            "type": "number",
+            "nullable": true
+          },
+          "ExternalProblemID": {
+            "type": "string",
+            "nullable": true
+          },
+          "InternalJobID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal unique identifier for the job onto which the time stamp is assigned",
+            "minimum": 1,
+            "maximum": 9999999999,
+            "nullable": true
+          },
+          "ExternalJobID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the job onto which the time stamp is assigned",
+            "example": "J827109-5",
+            "nullable": true
+          },
+          "ProblemType": {
+            "type": "number"
+          },
+          "Description": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "ImpactOnConditionBool": {
+            "type": "boolean"
+          },
+          "VisibleForCustomerBool": {
+            "type": "boolean"
+          },
+          "CustomersFaultBool": {
+            "type": "boolean"
+          },
+          "Comment": {
+            "type": "string",
+            "maxLength": 500,
+            "nullable": true
+          },
+          "SolvedBool": {
+            "type": "boolean"
+          },
+          "ReportedByInternalEmployeeID": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The internal identifier for the employee."
+          },
+          "ReportedByExternalEmployeeID": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the the employee this job time stamp is assigned to",
+            "example": "TS289182-5",
+            "nullable": true
+          },
+          "ReportedDateTime": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the the employee this job time stamp is assigned to",
+            "example": "TS289182-5"
+          },
+          "ReportingContext": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the the employee this job time stamp is assigned to",
+            "example": "LEVA.JOB.HANDOVER",
+            "maxLength": 30
+          },
+          "ReportingContextText": {
+            "type": "string",
+            "format": "int32",
+            "description": "The external unique identifer for the the employee this job time stamp is assigned to",
+            "maxLength": 200,
+            "example": "Custom Job Application"
+          },
+          "FixRequiredBool": {
+            "type": "boolean"
+          },
+          "IncidentMGMTRequiredBool": {
+            "type": "boolean"
+          },
+          "APP_ID": {
+            "type": "string",
+            "example": "42C81110DC714C528B6EB984CD9600E1",
+            "nullable": true
           }
         },
-        "description": "Data transfer object of a job problem"
+        "required": [
+          "ProblemType",
+          "Description",
+          "ImpactOnConditionBool",
+          "VisibleForCustomerBool",
+          "CustomersFaultBool",
+          "SolvedBool",
+          "ReportedDateTime",
+          "ReportingContext",
+          "ReportingContextText",
+          "FixRequiredBool",
+          "IncidentMGMTRequiredBool"
+        ]
       },
       "JobDocumentDto": {
         "title": "JobDocumentDto",
