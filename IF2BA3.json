@@ -1550,6 +1550,7 @@
       },
       "FileDocument": {
         "type": "object",
+        "additionalProperties": false,
         "properties": {
           "FileDocumentId": {
             "type": "integer",
@@ -1581,9 +1582,23 @@
             "type": "string",
             "nullable": true,
             "readOnly": true
+          },
+          "ExternalArchiveID": {
+            "type": "string",
+            "maxLength": 20,
+            "example": "38031",
+            "description": "ID of external document system.\nSubmit this without data strings to only store a reference to an external file.",
+            "nullable": true
+          },
+          "ExternalArchiveURL": {
+            "type": "string",
+            "maxLength": 300,
+            "example": "https://dms.customerdomain.com/document/38031",
+            "description": "direct or startup link to document in external document system.",
+            "nullable": true,
+            "readOnly": true
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FileDocumentInt64NullableKeyValuePair": {
         "type": "object",

@@ -146,6 +146,15 @@
               }
             }
           },
+          "401": {
+            "description": "Basic Authentication failed"
+          },
+          "403": {
+            "description": "Requester has insufficient rights"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
           "503": {
             "description": "Service unavailable due to maintenance",
             "content": {
@@ -155,15 +164,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Basic Authentication failed"
-          },
-          "403": {
-            "description": "Requester has insufficient rights"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -255,6 +255,15 @@
               }
             }
           },
+          "401": {
+            "description": "Basic Authentication failed"
+          },
+          "403": {
+            "description": "Requester has insufficient rights"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
           "503": {
             "description": "Service unavailable due to maintenance",
             "content": {
@@ -264,15 +273,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Basic Authentication failed"
-          },
-          "403": {
-            "description": "Requester has insufficient rights"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -409,6 +409,15 @@
               }
             }
           },
+          "401": {
+            "description": "Basic Authentication failed"
+          },
+          "403": {
+            "description": "Requester has insufficient rights"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
           "503": {
             "description": "Service unavailable due to maintenance",
             "content": {
@@ -418,15 +427,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Basic Authentication failed"
-          },
-          "403": {
-            "description": "Requester has insufficient rights"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -518,6 +518,15 @@
               }
             }
           },
+          "401": {
+            "description": "Basic Authentication failed"
+          },
+          "403": {
+            "description": "Requester has insufficient rights"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
           "503": {
             "description": "Service unavailable due to maintenance",
             "content": {
@@ -527,15 +536,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Basic Authentication failed"
-          },
-          "403": {
-            "description": "Requester has insufficient rights"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -1178,7 +1178,7 @@
             "nullable": true
           }
         },
-        "additionalProperties": { }
+        "additionalProperties": {}
       },
       "TypeOfDrive": {
         "enum": [
@@ -1199,6 +1199,18 @@
         },
         "additionalProperties": false,
         "description": "Data transfer object of a machine's type of drive."
+      },
+      "PropertyLockInfo": {
+        "title": "FieldLockInfo",
+        "type": "object",
+        "properties": {
+          "PropertyName": {
+            "type": "string"
+          },
+          "OwnerSystsem": {
+            "type": "string"
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -1211,7 +1223,7 @@
   },
   "security": [
     {
-      "basic": [ ]
+      "basic": []
     }
   ]
 }
