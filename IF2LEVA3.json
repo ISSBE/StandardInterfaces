@@ -4046,28 +4046,7 @@
         "type": "object",
         "additionalProperties": false,
         "description": "a performis Code. Identifies specific values and properties. Codes may be provided by the system by installation, by customizing or set up by keyusers. They are a major component of all performis applications.",
-        "x-examples": {
-          "example-1": {
-            "ChangeID": 1,
-            "ChangeDate": "string",
-            "CodeID": 1,
-            "Active": true,
-            "CodeType": 1,
-            "CompanyNo": 1,
-            "CodeNo": 1,
-            "Text": "string",
-            "ShortText": "string",
-            "CodeDetails": [
-              {
-                "CodeDetailID": 1,
-                "DetailNo": 1,
-                "CodeID": 1,
-                "Value": "string",
-                "ValueNumeric": 0
-              }
-            ]
-          }
-        },
+        "x-examples": {},
         "title": "Code",
         "properties": {
           "ChangeID": {
@@ -4183,7 +4162,8 @@
         },
         "additionalProperties": false,
         "description": "value of a code",
-        "title": "CodeValue"
+        "title": "CodeValue",
+        "x-examples": {}
       },
       "MachineCounter": {
         "required": [
@@ -4209,7 +4189,13 @@
         },
         "additionalProperties": false,
         "description": "machine's counter",
-        "title": "MachineCounter"
+        "title": "MachineCounter",
+        "x-examples": {
+          "example-1": {
+            "CounterTypeCode": 45480010,
+            "Account": "4711"
+          }
+        }
       },
       "DateOnly": {
         "type": "object",
@@ -4242,7 +4228,8 @@
         },
         "additionalProperties": false,
         "title": "DateOnly",
-        "description": "split up date format, especially used for recurring dates (which day of week, which day of year, ...)"
+        "description": "split up date format, especially used for recurring dates (which day of week, which day of year, ...)",
+        "x-examples": {}
       },
       "DayOfWeek": {
         "type": "string",
@@ -4257,7 +4244,10 @@
         ],
         "title": "DayOfWeek",
         "description": "specific value for day of week, see property enum for details.",
-        "example": "Monday"
+        "example": "Monday",
+        "x-examples": {
+          "example-1": "Monday"
+        }
       },
       "SchedulingGroupCode": {
         "required": [
@@ -4276,7 +4266,12 @@
         },
         "additionalProperties": false,
         "description": "machine's additional scheduling group",
-        "title": "SchedulingGroupCode"
+        "title": "SchedulingGroupCode",
+        "x-examples": {
+          "example-1": {
+            "SchedulingGroupCode": 45420010
+          }
+        }
       },
       "Employee": {
         "required": [
@@ -4450,7 +4445,8 @@
         },
         "additionalProperties": false,
         "description": "employee master data",
-        "title": "Employee"
+        "title": "Employee",
+        "x-examples": {}
       },
       "Error": {
         "type": "object",
@@ -4477,7 +4473,8 @@
         },
         "additionalProperties": false,
         "title": "Error",
-        "description": "description structure for error"
+        "description": "description structure for error",
+        "x-examples": {}
       },
       "FileDocumentLink": {
         "type": "object",
@@ -4536,7 +4533,13 @@
         },
         "additionalProperties": false,
         "description": "a machine's driver (linking by ID)",
-        "title": "MachineDriver"
+        "title": "MachineDriver",
+        "x-examples": {
+          "example-1": {
+            "DriverBpID": 57689,
+            "ExternalDriverBpID": "ABC-12345"
+          }
+        }
       },
       "Machine": {
         "required": [
@@ -4943,7 +4946,8 @@
         },
         "additionalProperties": false,
         "description": "machine master data",
-        "title": "Machine"
+        "title": "Machine",
+        "x-examples": {}
       },
       "MachineType": {
         "required": [
@@ -5029,17 +5033,29 @@
         },
         "additionalProperties": false,
         "description": "machine type master data",
-        "title": "MachineType"
+        "title": "MachineType",
+        "x-examples": {}
       },
       "MaintenanceWindow": {
         "type": "object",
         "additionalProperties": false,
         "title": "MaintenanceWindow",
         "description": "information structure for active maintenance windows",
+        "x-examples": {
+          "example-1": {
+            "Id": 3511,
+            "Active": true,
+            "FromDateTime": "2019-08-24T14:15:22Z",
+            "ToDateTime": "2019-08-24T14:15:22Z",
+            "Info": "monthly maintenance for patch installation",
+            "ClientStartAllowed": false
+          }
+        },
         "properties": {
           "Id": {
             "type": "integer",
             "format": "int64",
+            "example": 3511,
             "nullable": true,
             "readOnly": true
           },
@@ -5060,6 +5076,7 @@
           },
           "Info": {
             "type": "string",
+            "example": "monthly maintenance for patch installation",
             "nullable": true
           },
           "ClientStartAllowed": {
@@ -5158,7 +5175,8 @@
         },
         "additionalProperties": {},
         "title": "ProblemDetails",
-        "description": ""
+        "description": "",
+        "x-examples": {}
       },
       "Signature": {
         "type": "object",
@@ -5186,7 +5204,19 @@
         },
         "required": [
           "SignatureTypeCode"
-        ]
+        ],
+        "x-examples": {
+          "example-1": {
+            "InternalSignatureID": 0,
+            "SignatureTypeCode": 45680002,
+            "SigneeName": "Jerry Miller",
+            "SignaturDocumentLink": {
+              "FileDocumentInternalID": 4738919,
+              "FileExternalArchiveID": "DC9301231",
+              "FileDocumentGuid": "fa5df08c-f483-4dfc-be0e-9ad8a3127154"
+            }
+          }
+        }
       },
       "TypeOfDrive": {
         "type": "string",
@@ -5198,7 +5228,10 @@
         ],
         "description": "Typ of drive values.\r\n- `B`: Petrol\r\n- `H`: Hybrid\r\n- `D`: Diesel\r\n- `E`: Electric",
         "title": "TypeOfDrive",
-        "example": "B"
+        "example": "B",
+        "x-examples": {
+          "example-1": "B"
+        }
       },
       "Job": {
         "title": "Job",
@@ -5315,8 +5348,7 @@
                 "JobDocument": {
                   "FileDocumentInternalID": 4738919,
                   "FileExternalArchiveID": "DC9301231",
-                  "FileDocumentGuid": "fa5df08c-f483-4dfc-be0e-9ad8a3127154",
-                  "ExternalArchiveURL": "DMS://Documents/Orders/46211232"
+                  "FileDocumentGuid": "fa5df08c-f483-4dfc-be0e-9ad8a3127154"
                 }
               }
             ],
@@ -5402,15 +5434,13 @@
                   "SignaturDocumentLink": {
                     "FileDocumentInternalID": 4738919,
                     "FileExternalArchiveID": "DC9301231",
-                    "FileDocumentGuid": "fa5df08c-f483-4dfc-be0e-9ad8a3127154",
-                    "ExternalArchiveURL": "DMS://Documents/Orders/46211232"
+                    "FileDocumentGuid": "fa5df08c-f483-4dfc-be0e-9ad8a3127154"
                   }
                 },
                 "ReportPDF": {
                   "FileDocumentInternalID": 4738919,
                   "FileExternalArchiveID": "DC9301231",
-                  "FileDocumentGuid": "fa5df08c-f483-4dfc-be0e-9ad8a3127154",
-                  "ExternalArchiveURL": "DMS://Documents/Orders/46211232"
+                  "FileDocumentGuid": "fa5df08c-f483-4dfc-be0e-9ad8a3127154"
                 }
               }
             ],
@@ -5431,8 +5461,7 @@
                 "SignaturDocumentLink": {
                   "FileDocumentInternalID": 4738919,
                   "FileExternalArchiveID": "DC9301231",
-                  "FileDocumentGuid": "fa5df08c-f483-4dfc-be0e-9ad8a3127154",
-                  "ExternalArchiveURL": "DMS://Documents/Orders/46211232"
+                  "FileDocumentGuid": "fa5df08c-f483-4dfc-be0e-9ad8a3127154"
                 }
               }
             },
@@ -5491,17 +5520,17 @@
             ],
             "TransportDemandList": [
               {
-                "TransportDemandPositionID": 0,
-                "InternalJobID": "string",
-                "ExternalJobID": "string",
-                "Description": "string",
-                "Details": "string",
-                "UnitOfMeasure": "string",
-                "DecimalCount": 0,
-                "TransportQuantity": 0,
-                "LoadedQuantity": 0,
-                "UnloadedQuantity": 0,
-                "LoadingDateTime": "2019-08-24T14:15:22Z",
+                "TransportDemandPositionID": 2512341,
+                "InternalJobID": 51231,
+                "ExternalJobID": "J30123-2",
+                "Description": "Custom Fluid B028",
+                "Details": "handle with care, keep up-side up at all times",
+                "UnitOfMeasure": "Liter",
+                "DecimalCount": 2,
+                "TransportQuantity": 351.4,
+                "LoadedQuantity": 351.5,
+                "UnloadedQuantity": 351.4,
+                "LoadingDateTime": "2022-12-30T13:30:09",
                 "LoadingCheckmarkBool": false,
                 "UnloadingDateTime": "2019-08-24T14:15:22Z",
                 "UnloadingCheckmarkBool": false,
@@ -5529,8 +5558,8 @@
                   "Latitude": 25.9850628,
                   "Longitude": -97.1871375
                 },
-                "InternalRentalJobID": 0,
-                "ExternalRentalJobID": "string"
+                "InternalRentalJobID": 435123,
+                "ExternalRentalJobID": "J312341-2"
               }
             ]
           }
@@ -5766,7 +5795,65 @@
       "JobDetails": {
         "title": "JobDetails",
         "description": "detail information on a job such as scheduled activities, contacts and locations.\nNOTE: may be empty if not specifically requested (see Job request parameters and properties)",
-        "x-examples": {},
+        "x-examples": {
+          "example-1": {
+            "ScheduleList": [
+              {
+                "InternalJobScheduleID": 32345,
+                "ExternalJobScheduleID": "J32345-4-2",
+                "InternalJobID": 1,
+                "ExternalJobID": "J827109-5",
+                "SortNo": 100,
+                "Description": "Loading",
+                "DateTime": "2022-12-01T07:30:00",
+                "IsOccupied": true
+              }
+            ],
+            "ContactList": [
+              {
+                "InternalContactID": 34511,
+                "ExternalContactID": "KK34511",
+                "InternalJobID": 84721,
+                "ExternalJobID": "J827109-5",
+                "Description": "construction site manager",
+                "FullName": "Frank Flintstone",
+                "Phone": "+49 8745 951 18",
+                "EMail": "ff@customerdomain.com",
+                "IsCustomer": true,
+                "IsContactOnLocation": true
+              }
+            ],
+            "BookingActivityList": [
+              {
+                "InternalBookingActivityID": 82091,
+                "ExternalBookingActivityID": "BA82091-10",
+                "ActivityCode": "45570018",
+                "Activity": "Unloading",
+                "Active": true
+              }
+            ],
+            "LocationList": [
+              {
+                "InternalLocationID": 8392,
+                "ExternalLocationID": "LOC83-931",
+                "Description": "Construction Site, Gate 4",
+                "TransportRestriction": "limited height 4.5 meteres at gate 3, prefer gate 4 (no height limit)",
+                "Adress": {
+                  "Street": "Boca Chica Blvd.",
+                  "HouseNo": "52448",
+                  "POBox": "string",
+                  "AdditionalLine1": "C/O Dr. Maria Smith",
+                  "AdditionalLine2": "Environmental Dept / Building D2",
+                  "Country": "US",
+                  "ZipCode": "TX 78521",
+                  "City": "Brownsville",
+                  "Latitude": 25.9850628,
+                  "Longitude": -97.1871375
+                }
+              }
+            ]
+          }
+        },
         "type": "object",
         "properties": {
           "ScheduleList": {
@@ -6174,7 +6261,81 @@
           "ReportToDate",
           "Comment"
         ],
-        "x-examples": {}
+        "x-examples": {
+          "example-1": {
+            "InternalReportID": 31234,
+            "ExternalReportID": "R93819-3-1",
+            "ReportFromDate": "2022-12-01",
+            "ReportToDate": "2012-12-23",
+            "Comment": "return was delayed due to traffic jam at our gates > not her fault!",
+            "ReportTimeStampList": [
+              {
+                "InternalJobReportTimestampID": 483915,
+                "ExternalJobReportTimestampID": "TS289182-5",
+                "InternalJobID": 42341,
+                "ExternalJobID": "J827109-5",
+                "Timestamp": "2012-04-23T07:31:20",
+                "TimestampTypeCode": 45560001,
+                "Source": "MobileApp",
+                "InternalBookingActivityID": 482012,
+                "ExternalBookingActivityID": "830181",
+                "InternalMachineID": 4021,
+                "ExternalMachineID": "MRK8938719",
+                "InternalEmployeeID": 214,
+                "ExternalEmployeeID": "E214",
+                "Comment": "optional remark on activity, such as why something took longer"
+              }
+            ],
+            "ReportSurchargeList": [
+              {
+                "InternalReportSurchargeID": 483915,
+                "ExternalReportSurchargeID": "TS289182-5",
+                "InternalJobSurchargeID": 483915,
+                "ExternalJobSurchargeID": "TS289182-5",
+                "InternalJobID": 1,
+                "ExternalJobID": "J827109-5",
+                "InternalReportID": 52671,
+                "ExternalReportID": "J8401-4-RP1",
+                "DateTime": "2022-12-23T17:25:43",
+                "Assignment": "RENTAL_HANDOVER",
+                "Quantity": 23.2
+              }
+            ],
+            "EMailNotificationList": [
+              {
+                "InternalEMailNotificationID": 1,
+                "ExternalEMailNotificationID": "J827109-5",
+                "InternalJobID": 45123,
+                "ExternalJobID": "J827109-5",
+                "InternalReportID": 48192,
+                "ExternalReportID": "J4801-5-RP9",
+                "Sender": "no-reply@mydomain.com",
+                "SendDateTime": "2022-12-07T06:00:01",
+                "CreateDateTime": "2022-12-06T08:35:54",
+                "CreatedByInternalEmployeeID": 498,
+                "CreatedByExternalEmployeeID": "E948",
+                "ModifyDateTime": "2022-12-06T12:00:20",
+                "ModifiedByInternalEmployeeID": 341,
+                "ModifiedByExternalEmployeeID": "E341"
+              }
+            ],
+            "Signature": {
+              "InternalSignatureID": 0,
+              "SignatureTypeCode": 45680002,
+              "SigneeName": "Jerry Miller",
+              "SignaturDocumentLink": {
+                "FileDocumentInternalID": 4738919,
+                "FileExternalArchiveID": "DC9301231",
+                "FileDocumentGuid": "fa5df08c-f483-4dfc-be0e-9ad8a3127154"
+              }
+            },
+            "ReportPDF": {
+              "FileDocumentInternalID": 4738919,
+              "FileExternalArchiveID": "DC9301231",
+              "FileDocumentGuid": "fa5df08c-f483-4dfc-be0e-9ad8a3127154"
+            }
+          }
+        }
       },
       "JobReportTimeStamp": {
         "title": "JobReportTimeStamp",
@@ -6307,7 +6468,26 @@
         "title": "JobLocation",
         "type": "object",
         "description": "location information for leva+ (address, additional information such as restrictions, ect.)",
-        "x-examples": {},
+        "x-examples": {
+          "example-1": {
+            "InternalLocationID": 8392,
+            "ExternalLocationID": "LOC83-931",
+            "Description": "Construction Site, Gate 4",
+            "TransportRestriction": "limited height 4.5 meteres at gate 3, prefer gate 4 (no height limit)",
+            "Adress": {
+              "Street": "Boca Chica Blvd.",
+              "HouseNo": "52448",
+              "POBox": "string",
+              "AdditionalLine1": "C/O Dr. Maria Smith",
+              "AdditionalLine2": "Environmental Dept / Building D2",
+              "Country": "US",
+              "ZipCode": "TX 78521",
+              "City": "Brownsville",
+              "Latitude": 25.9850628,
+              "Longitude": -97.1871375
+            }
+          }
+        },
         "properties": {
           "InternalLocationID": {
             "type": "number",
@@ -6648,7 +6828,29 @@
           "HandoverCompletedDateTime",
           "CustomerBriefed"
         ],
-        "x-examples": {}
+        "x-examples": {
+          "example-1": {
+            "InternalHandoverID": 483915,
+            "ExternalHandoverID": "TS289182-5-HO",
+            "InternalJobID": 34451,
+            "ExternalJobID": "J827109-5",
+            "InternalEmployeeID": 341,
+            "ExternalEmployeeID": "E341",
+            "HandoverCompletedDateTime": "2012-04-23T18:25:43.511Z",
+            "CustomerBriefed": false,
+            "Comment": "customer already knows the machine very well",
+            "CustomerSignature": {
+              "InternalSignatureID": 0,
+              "SignatureTypeCode": 45680002,
+              "SigneeName": "Jerry Miller",
+              "SignaturDocumentLink": {
+                "FileDocumentInternalID": 4738919,
+                "FileExternalArchiveID": "DC9301231",
+                "FileDocumentGuid": "fa5df08c-f483-4dfc-be0e-9ad8a3127154"
+              }
+            }
+          }
+        }
       },
       "JobReturn": {
         "title": "JobReturn",
@@ -7138,44 +7340,116 @@
         "title": "JobTransportDemand",
         "type": "object",
         "description": "job transport demand clarifies what, how much, needs to go where and when.",
+        "x-examples": {
+          "example-1": {
+            "TransportDemandPositionID": 2512341,
+            "InternalJobID": 51231,
+            "ExternalJobID": "J30123-2",
+            "Description": "Custom Fluid B028",
+            "Details": "handle with care, keep up-side up at all times",
+            "UnitOfMeasure": "Liter",
+            "DecimalCount": 2,
+            "TransportQuantity": 351.4,
+            "LoadedQuantity": 351.5,
+            "UnloadedQuantity": 351.4,
+            "LoadingDateTime": "2022-12-30T13:30:09",
+            "LoadingCheckmarkBool": false,
+            "UnloadingDateTime": "2019-08-24T14:15:22Z",
+            "UnloadingCheckmarkBool": false,
+            "PickupLocation": {
+              "Street": "Boca Chica Blvd.",
+              "HouseNo": "52448",
+              "POBox": "string",
+              "AdditionalLine1": "C/O Dr. Maria Smith",
+              "AdditionalLine2": "Environmental Dept / Building D2",
+              "Country": "US",
+              "ZipCode": "TX 78521",
+              "City": "Brownsville",
+              "Latitude": 25.9850628,
+              "Longitude": -97.1871375
+            },
+            "DeliveryLocation": {
+              "Street": "Boca Chica Blvd.",
+              "HouseNo": "52448",
+              "POBox": "string",
+              "AdditionalLine1": "C/O Dr. Maria Smith",
+              "AdditionalLine2": "Environmental Dept / Building D2",
+              "Country": "US",
+              "ZipCode": "TX 78521",
+              "City": "Brownsville",
+              "Latitude": 25.9850628,
+              "Longitude": -97.1871375
+            },
+            "InternalRentalJobID": 435123,
+            "ExternalRentalJobID": "J312341-2"
+          }
+        },
         "properties": {
           "TransportDemandPositionID": {
-            "type": "number"
+            "type": "number",
+            "example": 2512341,
+            "minimum": 1,
+            "maximum": 9999999999,
+            "description": "internal unique id for this job transport demand"
           },
           "InternalJobID": {
-            "type": "string"
+            "type": "number",
+            "example": 51231,
+            "minimum": 1,
+            "maximum": 9999999999,
+            "description": "internal unique job id",
+            "nullable": true
           },
           "ExternalJobID": {
-            "type": "string"
+            "type": "string",
+            "example": "J30123-2",
+            "description": "external unique job id",
+            "nullable": true
           },
           "Description": {
-            "type": "string"
+            "type": "string",
+            "example": "Custom Fluid B028",
+            "description": "description of good"
           },
           "Details": {
-            "type": "string"
+            "type": "string",
+            "example": "handle with care, keep up-side up at all times",
+            "description": "additional detail / information",
+            "nullable": true
           },
           "UnitOfMeasure": {
-            "type": "string"
+            "type": "string",
+            "example": "Liter",
+            "description": "UoM in wich the quantity is transported"
           },
           "DecimalCount": {
-            "type": "integer"
+            "type": "integer",
+            "description": "amount of decimals in quantity allowed for this UoM",
+            "example": 2,
+            "format": "int32"
           },
           "TransportQuantity": {
             "type": "number",
+            "example": 351.4,
             "format": "double"
           },
           "LoadedQuantity": {
             "type": "number",
+            "description": "loaded quantity can be different from the demand. use-case is under or over-delivery",
+            "example": 351.5,
             "format": "double"
           },
           "UnloadedQuantity": {
             "type": "number",
+            "description": "unloaded quantity can be different from the demand. use-case is under or over-delivery",
+            "example": 351.4,
             "format": "double"
           },
           "LoadingDateTime": {
             "type": "string",
             "format": "date-time",
-            "description": "Planned loading date and time."
+            "description": "Planned loading date and time.",
+            "example": "2022-12-30T13:30:09"
           },
           "LoadingCheckmarkBool": {
             "type": "boolean",
@@ -7203,15 +7477,16 @@
           "InternalRentalJobID": {
             "type": "number",
             "description": "is set, when the current transport demand (assigned resource) points to a rental job.",
+            "example": 435123,
             "nullable": true
           },
           "ExternalRentalJobID": {
             "type": "string",
             "description": "is set, when the current transport demand (assigned resource) points to a rental job.",
+            "example": "J312341-2",
             "nullable": true
           }
-        },
-        "x-examples": {}
+        }
       }
     },
     "securitySchemes": {
